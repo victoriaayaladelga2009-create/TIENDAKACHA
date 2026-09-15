@@ -1,0 +1,3616 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kacha</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bernhard+Tango&family=Poppins:wght@300;400;600;700&display=swap');
+
+    body{
+    margin:0;
+    font-family:'Bernhard Tango BT','Bernhard Tango','Poppins',sans-serif;
+    display:flex;
+    background:linear-gradient(135deg,#D7E8FF 0%,#F7D6E7 45%,#E4F0FF 100%);
+}
+    .menu {
+        width: 220px;
+        height: 100vh;
+        background:linear-gradient(180deg,#6D8FBE,#A9C7F5,#F4A8BB);
+        box-shadow:8px 0 30px rgba(0,0,0,.15);
+
+        padding-top: 20px;
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .menu h2 {
+        color:#294C7A;
+        margin-bottom: 15px;
+        font-size: 22px;
+        letter-spacing: 2px;
+    }
+
+    .menu button{
+    width:90%;
+    margin:10px;
+    padding:12px 15px;
+    border:none;
+    border-radius:15px;
+    background:#efe2d9;
+    cursor:pointer;
+    transition:0.3s;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-align:left;
+    color:#6b4f4f;
+    font-size:14px;
+}
+
+   .menu button i{
+    font-size:18px;
+    color:#c79ca3;
+}
+
+ .menu button:hover{
+    background:#F4A8BB;
+    color:white;
+    transform:scale(1.05);
+}
+
+.menu button:hover i{
+    color:white;
+    color:white;
+}
+    header{
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 20px;
+    }
+    .logo {
+        font-size: 28px;
+        font-weight: bold;
+        font-style: italic;
+        color: #294C7A;
+    }
+
+
+    .icons{
+    position:relative;
+    z-index:1000;
+}
+
+    .icons i {
+        font-size: 32px;
+        cursor: pointer;
+        color: #294C7A;
+        transition: 0.3s;
+    }
+
+    .icons i:hover {
+        color: #EBC2CC;
+        transform: scale(1.2);
+    }
+
+    .main{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:75vh;
+    gap:40px;
+    padding:20px 0;
+}
+
+    .text {
+        max-width: 42%;
+    }
+
+    .text h1{
+     font-size:65px;
+     font-family:Georgia,serif;
+     line-height:1.1;
+     color:#244D84;
+
+}
+     .text span{
+     color:#F48FB1;
+}
+
+    .text p {
+        color: #4F6F99;
+        font-size: 18PX;
+    }
+
+    .buttons {
+        margin-top: 20px;
+    }
+
+    .btn{
+    padding:14px 30px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    box-shadow:0 10px 25px rgba(244,168,187,.4);
+}
+
+    .btn-dark{
+background:#F4A8BB;
+}
+
+.btn-outline{
+
+background:white;
+
+border:2px solid #6D8FBE;
+
+color:#6D8FBE;
+}
+
+    .image{
+     background:white;
+     padding:25px;
+     border-radius:35px;
+     box-shadow:0 20px 45px rgba(0,0,0,.18);
+     transform: translateY(24px);
+}
+
+     .image img{
+     width:360px;
+     border-radius:25px;
+}
+
+    .container{
+
+     margin-left:250px;
+     width:calc(100% - 270px);
+     background:rgba(255,255,255,.82);
+     backdrop-filter:blur(15px);
+     border-radius:40px;
+     padding:40px;
+     box-shadow:0 20px 45px rgba(0,0,0,.15);
+     overflow:visible;
+     position:relative;
+}
+
+    .card {
+        background: #fff0f4;
+        border-left:5px solid#f4a8bb;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 12px;
+    }
+   #contenido{
+    display:none;
+    margin-top:40px;
+    background:#fffaf7;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+    color:#3b2b2b;
+    min-height:100vh;
+    overflow-y:auto;
+}
+
+    .decoracion-pagina{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:150px;
+    background:#AFC4E8;
+    border-radius:50% 50% 0 0;
+    z-index:0;
+}
+
+  .encabezado-pagina,
+  .categorias,
+  .productos,
+  .combo-contenedor,
+  .nosotros{
+    position:relative;
+    z-index:2;
+}
+
+    .decoracion-inferior{
+      position:absolute;
+      bottom:0;
+      left:0;
+      width:100%;
+      height:180px;
+      background:#AFC4E8;
+      border-radius:50% 50% 0 0;
+      z-index:0
+
+}
+
+     #contenido,
+     .main,
+    header{
+    position:relative;
+    z-index:2;
+}
+.pagina{
+    display:none;
+    width:100%;
+    min-height:100vh;
+}
+
+.pagina.activa{
+    display:block;
+}
+    .flor-izquierda{
+    position:absolute;
+    top:20px;
+    left:20px;
+    color:#D8D6E8;
+    font-size:80px;
+    z-index:1;
+}
+
+    .logo-subpagina{
+    font-size:28px;
+    font-weight:bold;
+    font-style:italic;
+    background:linear-gradient(90deg,#294C7A,#C381A8,#F6A8C7);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+    position:relative;
+    z-index:10;
+    display:inline-block;
+    margin-bottom:10px;
+    text-shadow:0 1px 2px rgba(255,255,255,0.7);
+}
+
+    .encabezado-pagina{
+    background:linear-gradient(135deg,#294C7A,#C381A8,#F6A8C7);
+    color:white;
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    margin-bottom:25px;
+    box-shadow:0 16px 32px rgba(41,76,122,0.22);
+}
+
+    .encabezado-pagina h1{
+    margin:0;
+    font-size:40px;
+    }
+
+    .encabezado-pagina p{
+    margin-top:10px;
+    color:#eef7ff;
+    font-size:18px;
+    }
+
+    .portada{
+    width:100%;
+    max-height:250px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:20px;
+    }
+    .boton-comprar{
+    display:flex;
+    justify-content:flex-end;
+    margin-top:30px;
+}
+
+    .botones-redondos{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-top:20px;
+    flex-wrap:wrap;
+  }
+   .categorias{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  margin-bottom:30px;
+  flex-wrap:wrap;
+ }
+
+ 
+.circulo{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:#fde8ee;
+    border:none;
+    color:#214a82;
+    font-weight:bold;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+}
+
+.circulo i{
+    font-size:28px;
+}
+
+.circulo:hover{
+    background:#F4A8BB;
+    color:white;
+    transition:0.3s;
+} 
+
+    .producto{
+        background:#ffffff;
+        padding:18px 18px 22px;
+        border-radius:16px;
+        width:260px;
+        box-shadow:0 8px 20px rgba(0,0,0,.06);
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:flex-start;
+        position:relative;
+        overflow:hidden;
+}
+
+.producto .producto-frontal{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:100%;
+}
+
+.productos{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+    padding-bottom:40px;
+}
+.contenido-celulares{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+}
+.producto img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    display:block;
+    margin:0 auto 8px;
+    border-radius:12px;
+}
+.secretos-container{
+    display:flex;
+    align-items:stretch;
+    gap:24px;
+    padding:24px;
+    background:linear-gradient(180deg,#eef7ff 0%,#ffffff 100%);
+    border-radius:24px;
+    box-shadow:0 18px 30px rgba(41,76,122,0.12);
+}
+
+.menu-secretos{
+    width:420px;
+    display:grid;
+    grid-template-columns:repeat(2, minmax(150px, 1fr));
+    gap:14px;
+    flex-shrink:0;
+}
+
+.menu-secretos button{
+    min-height:145px;
+    padding:16px 14px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#294C7A,#6D8FBE);
+    color:#ffffff;
+    font-weight:800;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:0 10px 18px rgba(41,76,122,0.14);
+    text-align:center;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.menu-secretos button:hover,
+.menu-secretos button.active{
+    background:linear-gradient(135deg,#183F73,#9bbcea);
+    color:white;
+    transform:translateY(-3px);
+    box-shadow:0 12px 22px rgba(41,76,122,0.22);
+}
+
+.video-principal{
+    flex:1;
+    min-width:320px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.video-principal iframe{
+    width:100%;
+    height:260px;
+    border-radius:16px;
+    border:none;
+    box-shadow:0 10px 20px rgba(41,76,122,0.12);
+}
+
+.lista-tutoriales{
+    flex:0 0 220px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    max-height:280px;
+    overflow-y:auto;
+}
+
+.video-secretos{
+    flex:1;
+}
+.texto-overlay{
+    position:absolute;
+    inset:18px;
+    background:rgba(255,255,255,0.95);
+    color:#294C7A;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:10px;
+    box-sizing:border-box;
+    border-radius:12px;
+    font-size:13px;
+    line-height:1.4;
+    font-weight:600;
+}
+.marca{
+    width:150px;
+    height:100px;
+    border:none;
+    background:#fde8ee;
+    color:#214a82;
+    cursor:pointer;
+    font-weight:bold;
+    border-radius:15px;
+    transition:0.3s;
+}
+
+.marca:hover{
+    background:#f4a8bb;
+    color:white;
+    transform:scale(1.05);
+}
+
+.comprar{
+   width:100px;
+   height:100px;
+   border-radius:50%;
+   border:none;
+   background:#6D8FBE;
+   color:white;
+   font-size:18px;
+   cursor:pointer;
+   transition:0.3s;
+}
+
+.comprar:hover{
+   background:#294C7A;
+   transform:scale(1.05);
+}
+
+.contenido-celulares{
+    display:flex;
+    gap:20px;
+}
+
+.contenido-celulares .producto img{
+width:180px;
+height:250px;
+object-fit:cover;
+border:none;
+}
+.combo-contenedor{
+display:flex;
+flex-wrap:wrap;
+gap:60px;
+justify-content:center;
+margin-top:30px;
+}
+
+.combo{
+width:400px;
+height:180px;
+background:#fff0f4;
+border-radius:20px;
+padding:15px;
+display:flex;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.combo img{
+width:140px;
+height:140px;
+object-fit:cover;
+border-radius:10px;
+border:none;
+background:white;
+padding:5px;
+}
+
+.combo-info{
+padding-left:15px;
+flex:1;
+}
+
+.combo-info h3{
+margin-top:0;
+color:#3b2b2b;
+}
+.combo-datos{
+margin-top:20px;
+display:flex;
+gap:10px;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.boton-comprar{
+text-align:right;
+margin-top:30px;
+}
+
+.boton-comprar button{
+width:100px;
+height:100px;
+border-radius:50%;
+border:none;
+background:#6D8FBE;
+color:white;
+font-size:18px;
+cursor:pointer;
+}
+
+.boton-comprar button:hover{
+background:#F4A8BB;
+}
+.nosotros{
+display:flex;
+justify-content:space-between;
+gap:40px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.ubicacion,
+.encargados{
+flex:1;
+background:#fff0f4;
+padding:20px;
+border-radius:20px;
+}
+
+.mapa{
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.persona{
+text-align:center;
+margin-top:20px;
+}
+
+.persona img{
+width:150px;
+height:150px;
+border-radius:10px;
+object-fit:cover;
+}
+
+.persona h3{
+margin:10px 0;
+}
+html, body{
+    overflow-x:hidden;
+}
+
+.productos,
+.combo-contenedor,
+.nosotros,
+.contenido-celulares{
+    width:100%;
+}
+
+#contenido{
+    padding-bottom:50px;
+}
+.btn-anadir{
+    background:linear-gradient(135deg,#F48FB1,#F9A5B3);
+    color:white;
+    border:none;
+    border-radius:999px;
+    padding:0 14px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    margin:0;
+    transition:0.2s ease;
+    height:36px;
+    min-width:120px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
+
+.btn-anadir:hover{
+    transform:scale(1.03);
+}
+
+.btn-anadir.activo{
+    background:linear-gradient(135deg,#4CAF50,#66BB6A);
+}
+
+.acciones-producto{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+    margin-top:12px;
+    width:100%;
+    max-width:252px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.acciones-producto .selector-cantidad,
+.acciones-producto .btn-anadir{
+    margin-top:0;
+}
+
+.check-producto{
+    display:none;
+}
+.selector-cantidad{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:120px;
+    height:36px;
+    background:linear-gradient(135deg,#F9A5B3,#F57D93);
+    border-radius:999px;
+    padding:0 8px;
+    margin:0;
+}
+
+.selector-cantidad button{
+    background:transparent;
+    border:none;
+    color:white;
+    font-size:20px;
+    font-weight:700;
+    cursor:pointer;
+    width:36px;
+    height:36px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:999px;
+}
+
+.selector-cantidad span{
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    min-width:28px;
+    text-align:center;
+}
+
+.selector-cantidad button:hover{
+    transform:scale(1.05);
+}
+#carritoFlotante{
+    position:fixed;
+    top:20px;
+    right:20px;
+    width:280px;
+    background:white;
+    border-radius:20px;
+    padding:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+    z-index:9999;
+}
+
+#listaCarrito{
+    max-height:250px;
+    overflow-y:auto;
+}
+
+.itemCarrito{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+
+#btnComprar{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:15px;
+    background:#F48FB1;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+#btnComprar:hover{
+    background:#E76C9C;
+}
+
+#paymentForm{
+    display:none;
+    flex-direction:column;
+    gap:20px;
+    margin-top:15px;
+    width:100%;
+}
+
+.cerrar-pago{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:38px;
+    height:38px;
+    border:none;
+    border-radius:50%;
+    background:#294C7A;
+    color:#ffffff;
+    font-size:20px;
+    font-weight:700;
+    cursor:pointer;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 8px 15px rgba(41,76,122,0.25);
+    transition:0.3s ease;
+}
+
+.cerrar-pago:hover{
+    background:#6D8FBE;
+    transform:scale(1.05);
+}
+
+.payment-form{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    padding:24px;
+    border-radius:30px;
+    background:linear-gradient(180deg, #ffffff 0%, #fbeaf2 100%);
+    box-shadow:0 25px 60px rgba(70, 35, 90, 0.16);
+    border:1px solid rgba(255,255,255,0.75);
+}
+
+#carritoFlotante{
+    position:fixed;
+    bottom:110px;
+    right:25px;
+    width:420px;
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+    display:none;
+    z-index:9999;
+}
+
+#carritoFlotante.form-visible > h2,
+#carritoFlotante.form-visible > #listaCarrito,
+#carritoFlotante.form-visible > h3,
+#carritoFlotante.form-visible > #btnComprar {
+    display:none;
+}
+
+#carritoFlotante.form-visible {
+    width:420px;
+    min-height:450px;
+}
+
+@media (max-width: 640px) {
+    #carritoFlotante.form-visible {
+        width:calc(100% - 30px);
+        right:15px;
+        left:15px;
+    }
+}
+
+.payment-form .form-header{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    align-items:center;
+    text-align:center;
+}
+
+.payment-form .form-header .icon-card{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#F48FB1,#4F6F99);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    font-size:24px;
+    box-shadow:0 12px 26px rgba(244, 143, 189, 0.32);
+}
+
+.payment-form .form-header h3{
+    margin:0;
+    color:#d9417d;
+    font-size:24px;
+}
+
+.payment-form .form-header p{
+    margin:0;
+    color:#6d5a79;
+    font-size:14px;
+    max-width:85%;
+}
+
+.form-field{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.form-field label{
+    font-size:14px;
+    font-weight:700;
+    color:#294C7A;
+}
+
+.form-input{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 14px;
+    border-radius:18px;
+    background:#fff;
+    border:1px solid #f1d7e2;
+}
+
+.form-input i{
+    color:#d9417d;
+    font-size:18px;
+    min-width:20px;
+}
+
+.form-input input,
+.form-input select{
+    width:100%;
+    border:none;
+    background:transparent;
+    color:#3b2b2b;
+    font-size:14px;
+    outline:none;
+}
+
+.payment-methods{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.payment-method{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 16px;
+    border-radius:18px;
+    border:1px solid #f1d7e2;
+    background:#ffffff;
+    cursor:pointer;
+}
+
+.payment-method input{
+    accent-color:#4f6f99;
+}
+
+.payment-method span{
+    color:#294C7A;
+    font-weight:700;
+}
+
+#btnPagarAhora{
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:20px;
+    background:linear-gradient(135deg,#294C7A,#4F6F99);
+    color:white;
+    font-size:16px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+#btnPagarAhora:hover{
+    background:linear-gradient(135deg,#1f385f,#3c548a);
+}
+
+#botonCarrito{
+    position:fixed;
+    bottom:25px;
+    right:25px;
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:#F48FB1;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    cursor:pointer;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
+    z-index:9999;
+}
+
+.barra-movil {
+    display: none;
+}
+
+#contadorCarrito{
+    position:absolute;
+    top:5px;
+    right:8px;
+    background:red;
+    color:white;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:12px;
+}
+
+#carritoFlotante{
+    position:fixed;
+    bottom:110px;
+    right:25px;
+    width:280px;
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+    display:none;
+    z-index:9999;
+}
+
+@media (max-width: 640px) {
+
+    body{
+        display:block;
+        background:#ffffff;
+        margin:0;
+    }
+
+    .menu{
+        display:none;
+    }
+
+   /* =================================
+   PORTADA PRINCIPAL CELULAR
+================================= */
+
+.container{
+    padding:8px 7px 50px;
+    border-radius:0;
+    width:100%;
+    margin:0;
+    box-sizing:border-box;
+}
+
+header{
+    padding:3px 2px 6px;
+}
+
+.logo{
+    font-size:16px;
+}
+
+.icons{
+    display:flex;
+    gap:7px;
+}
+
+.icons i{
+    font-size:14px;
+}
+
+.main{
+    display:grid;
+    grid-template-columns:58% 42%;
+
+    align-items:start;
+
+    min-height:auto;
+
+    gap:0;
+
+    padding:3px 3px 0;
+
+    box-sizing:border-box;
+}
+
+.text{
+    width:100%;
+    max-width:100%;
+    padding:5px 0 0;
+    margin:0;
+    text-align:left;
+}
+
+.text h1{
+    font-size:18px;
+    line-height:1.08;
+
+    margin:10px 0 5px;
+
+    max-width:150px;
+}
+
+.text p{
+    font-size:7px;
+    line-height:1.35;
+
+    max-width:145px;
+
+    margin:5px 0;
+}
+
+.image{
+    width:100%;
+    max-width:105px;
+
+    padding:6px;
+
+    margin:35px auto 0;
+
+    border-radius:12px;
+
+    transform:none;
+
+    box-sizing:border-box;
+}
+
+.image img{
+    width:100%;
+    height:95px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+}
+/* CURVA AZUL DE LA PORTADA */
+
+#decoracionInferior{
+    position:relative;
+
+    width:calc(100% + 14px);
+
+    height:48px;
+
+    left:-7px;
+
+    bottom:auto;
+
+    margin-top:0;
+
+    background:#AFC4E8;
+
+    border-radius:50% 50% 0 0 / 45% 45% 0 0;
+
+    z-index:1;
+}
+
+
+/* ==========================================
+   PUNTOS DEL CARRUSEL
+========================================== */
+
+.puntos-carrusel{
+
+    position:absolute;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    margin-top:-28px;
+
+    z-index:5;
+
+    display:flex;
+
+    gap:4px;
+}
+
+.puntos-carrusel span{
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#ffffff;
+
+    display:block;
+}
+
+.puntos-carrusel span:first-child{
+
+    background:#df7188;
+
+}
+
+
+/* ==========================================
+   CATEGORÍAS DE LA PÁGINA PRINCIPAL
+========================================== */
+
+.categorias-principal{
+
+    width:100%;
+
+    background:#ffffff;
+
+    padding:10px 8px 15px;
+
+    margin:0;
+
+    box-sizing:border-box;
+
+    border-radius:15px 15px 0 0;
+
+    position:relative;
+
+    z-index:4;
+}
+
+.categorias-principal h2{
+
+    text-align:center;
+
+    font-size:11px;
+
+    color:#27364d;
+
+    margin:0 0 9px;
+
+    font-weight:700;
+}
+
+.botones-categorias{
+
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:7px;
+
+    box-sizing:border-box;
+}
+
+.boton-categoria{
+
+    min-height:57px;
+
+    background:#fff4f5;
+
+    border:none;
+
+    border-radius:10px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:3px;
+
+    padding:4px;
+
+    color:#27364d;
+
+    font-size:7px;
+
+    text-align:center;
+
+    box-sizing:border-box;
+}
+
+.boton-categoria i{
+
+    font-size:14px;
+
+    color:#df7188;
+}
+
+.boton-categoria span{
+
+    line-height:1.15;
+}
+
+
+/* ==========================================
+   CARRITO FLOTANTE
+========================================== */
+
+#botonCarrito{
+
+    width:42px;
+
+    height:42px;
+
+    right:8px;
+
+    bottom:58px;
+
+    font-size:16px;
+
+    z-index:10001;
+}
+
+
+/* ==========================================
+   BARRA INFERIOR
+========================================== */
+
+.barra-movil{
+
+    position:fixed !important;
+
+    bottom:0 !important;
+
+    left:0 !important;
+
+    right:0 !important;
+
+    width:100% !important;
+
+    height:43px;
+
+    background:#ffffff;
+
+    border-top:1px solid #eeeeee;
+
+    display:flex !important;
+
+    justify-content:space-around;
+
+    align-items:center;
+
+    z-index:99999;
+
+    box-shadow:0 -2px 8px rgba(0,0,0,.08);
+
+    box-sizing:border-box;
+}
+
+.barra-movil button{
+
+    background:none;
+
+    border:none;
+
+    color:#27364d;
+
+    font-size:7px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:2px;
+
+    padding:0;
+}
+
+.barra-movil i{
+
+    font-size:14px;
+}
+
+.barra-movil button:first-child{
+
+    color:#df7188;
+}
+    
+    
+    .image img{
+        width:100%;
+        border-radius:18px;
+    }
+
+    /* =========================
+       SUBPÁGINAS
+    ========================= */
+
+    .pagina{
+        width:100%;
+        min-height:auto;
+        box-sizing:border-box;
+    }
+
+    .logo-subpagina{
+        font-size:25px;
+        margin:5px 0 12px;
+    }
+
+    .encabezado-pagina{
+        padding:17px 10px;
+        margin-bottom:15px;
+        border-radius:15px;
+    }
+
+    .encabezado-pagina h1{
+        font-size:20px;
+    }
+
+    .encabezado-pagina p{
+        font-size:12px;
+        margin:5px 0 0;
+    }
+
+    /* =========================
+       CATEGORÍAS
+    ========================= */
+
+    .categorias{
+        display:grid;
+        grid-template-columns:repeat(6,1fr);
+        gap:5px;
+        width:100%;
+        margin-bottom:18px;
+        padding:0;
+    }
+
+    .circulo{
+        width:100%;
+        height:auto;
+        min-height:65px;
+        border-radius:15px;
+        background:#fff8fa;
+        color:#27364d;
+        font-size:9px;
+        gap:5px;
+        padding:5px 2px;
+        box-sizing:border-box;
+    }
+
+    .circulo i{
+        font-size:17px;
+    }
+
+    /* =========================
+       PRODUCTOS
+    ========================= */
+
+    .productos{
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:12px;
+        width:100%;
+        padding:0 0 20px;
+        box-sizing:border-box;
+    }
+
+    .producto{
+        width:100%;
+        min-width:0;
+        padding:8px;
+        border-radius:12px;
+        box-sizing:border-box;
+        box-shadow:0 3px 12px rgba(0,0,0,.10);
+    }
+
+    .producto img{
+        width:100%;
+        height:135px;
+        object-fit:cover;
+        border-radius:9px;
+        margin-bottom:5px;
+    }
+
+    .nombre-producto{
+        font-size:12px;
+        margin:5px 0 2px;
+    }
+
+    .precio-producto{
+        font-size:12px;
+        margin-bottom:5px;
+    }
+
+    /* =========================
+       BOTONES DE PRODUCTO
+    ========================= */
+
+    .acciones-producto{
+        width:100%;
+        gap:5px;
+        margin-top:5px;
+    }
+
+    .selector-cantidad{
+        width:65px;
+        height:28px;
+        padding:0 3px;
+    }
+
+    .selector-cantidad button{
+        width:20px;
+        height:28px;
+        font-size:14px;
+    }
+
+    .selector-cantidad span{
+        font-size:12px;
+        min-width:15px;
+    }
+
+    .btn-anadir{
+        min-width:60px;
+        height:28px;
+        padding:0 7px;
+        font-size:10px;
+        gap:3px;
+    }
+
+    /* =========================
+       PRODUCTOS DE CELULAR
+    ========================= */
+
+    .contenido-celulares{
+        display:grid;
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:12px;
+        width:100%;
+    }
+
+    .contenido-celulares .producto{
+        width:100%;
+    }
+
+    .contenido-celulares .producto img{
+        width:100%;
+        height:145px;
+        object-fit:cover;
+    }
+
+    /* =========================
+       BOTONES CELULAR
+    ========================= */
+
+    .contenido-celulares + *{
+        max-width:100%;
+    }
+
+    .marca{
+        width:100%;
+        height:55px;
+        min-height:55px;
+        font-size:10px;
+        padding:5px;
+    }
+
+    .marca.active{
+        background:#ffd9e5;
+        color:#a13f67;
+        font-weight:600;
+    }
+
+    /* =========================
+       COMBOS
+    ========================= */
+
+    .combo-contenedor{
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+        width:100%;
+        margin-top:10px;
+    }
+
+    .combo{
+        width:100%;
+        height:auto;
+        min-height:105px;
+        padding:8px;
+        box-sizing:border-box;
+        border-radius:12px;
+        display:flex;
+        flex-direction:row;
+        align-items:center;
+        gap:8px;
+    }
+
+    .combo img{
+        width:95px;
+        height:95px;
+        padding:0;
+        border-radius:8px;
+        flex-shrink:0;
+        object-fit:cover;
+    }
+
+    .combo-info{
+        padding-left:3px;
+        min-width:0;
+    }
+
+    .combo-info h3{
+        font-size:12px;
+        margin:0 0 5px;
+    }
+
+    .combo-info p{
+        font-size:10px;
+        margin:3px 0;
+    }
+
+    .combo-datos{
+        margin-top:5px;
+        gap:5px;
+    }
+
+    .combo .selector-cantidad{
+        width:65px;
+    }
+
+    /* =========================
+       SECRETOS
+    ========================= */
+
+    .secretos-container{
+        display:flex;
+        flex-direction:column;
+        gap:12px;
+    }
+
+    .menu-secretos{
+        width:100%;
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:8px;
+    }
+
+    .menu-secretos button{
+        padding:12px 5px;
+        font-size:11px;
+        border:none;
+        border-radius:12px;
+        background:#fff3f7;
+        color:#6f4a57;
+        cursor:pointer;
+    }
+
+    .menu-secretos button.active{
+        background:#f4a8bb;
+        color:white;
+    }
+
+    .video-principal iframe{
+        width:100%;
+        height:220px;
+        border:none;
+        border-radius:14px;
+    }
+
+    .lista-tutoriales{
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:10px;
+    }
+
+    .tutorial-card{
+        display:flex;
+        flex-direction:column;
+        background:white;
+        border:none;
+        border-radius:14px;
+        overflow:hidden;
+        box-shadow:0 3px 10px rgba(0,0,0,.08);
+        text-align:left;
+        cursor:pointer;
+        padding:0;
+    }
+
+    .tutorial-card img{
+        width:100%;
+        height:95px;
+        object-fit:cover;
+    }
+
+    .tutorial-info{
+        padding:8px;
+    }
+
+    .tutorial-info h3{
+        font-size:11px;
+        margin:0 0 4px;
+        color:#2f435d;
+    }
+
+    .tutorial-info p{
+        font-size:10px;
+        margin:0;
+        color:#6f7b8a;
+    }
+
+    /* =========================
+       NOSOTROS
+    ========================= */
+
+    .nosotros{
+        display:flex;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .ubicacion,
+    .encargados{
+        width:100%;
+        box-sizing:border-box;
+        padding:15px;
+    }
+
+    /* =========================
+       CARRITO FLOTANTE
+    ========================= */
+
+    #botonCarrito{
+        width:55px;
+        height:55px;
+        right:15px;
+        bottom:70px;
+        font-size:22px;
+    }
+
+    #carritoFlotante{
+        left:10px;
+        right:10px;
+        bottom:125px;
+        width:auto;
+        max-height:60vh;
+        overflow-y:auto;
+        box-sizing:border-box;
+    }
+
+    /* =========================
+       BARRA INFERIOR
+    ========================= */
+
+    .barra-movil{
+        position:fixed;
+        bottom:0;
+        left:0;
+        width:100%;
+        height:62px;
+        background:white;
+        border-top:1px solid #eee;
+        display:none;
+        justify-content:space-around;
+        align-items:center;
+        z-index:10000;
+        box-shadow:0 -3px 15px rgba(0,0,0,.08);
+    }
+
+    .barra-movil button{
+        background:none;
+        border:none;
+        color:#27364d;
+        font-size:10px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:4px;
+    }
+
+    .barra-movil i{
+        font-size:20px;
+    }
+
+    .barra-movil button:first-child{
+        color:#df7188;
+    }
+
+    /* Ocultar decoración grande en celular */
+   .decoracion-inferior{
+    display:block;
+
+    width:100%;
+    height:95px;
+
+    position:relative;
+
+    margin-top:-5px;
+
+    background:#a9c8ed;
+
+    border-radius:50% 50% 0 0 / 35% 35% 0 0;
+
+    box-sizing:border-box;
+} 
+    .decoracion-pagina,
+    .flor-izquierda{
+        display:none;
+    }
+
+
+    .barra-movil{
+        position:fixed;
+        bottom:0;
+        left:0;
+        right:0;
+        width:100%;
+        height:62px;
+        background:white;
+        border-top:1px solid #eeeeee;
+        display:none;
+        justify-content:space-around;
+        align-items:center;
+        z-index:10000;
+        box-shadow:0 -3px 15px rgba(0,0,0,.08);
+        box-sizing:border-box;
+    }
+
+    .barra-movil button{
+        background:none;
+        border:none;
+        color:#27364d;
+        font-size:10px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:4px;
+    }
+
+    .barra-movil i{
+        font-size:20px;
+    }
+
+    .barra-movil button:first-child{
+        color:#df7188;
+    }
+
+    @media (max-width: 1024px) {
+        .barra-movil {
+            display:flex;
+        }
+    }
+
+    @media (min-width: 1025px) {
+        .barra-movil {
+            display:none;
+        }
+    }
+.categorias-principal{
+    width:100%;
+
+    background:#ffffff;
+
+    padding:18px 12px 25px;
+
+    box-sizing:border-box;
+
+    border-radius:25px 25px 0 0;
+
+    margin-top:-5px;
+}
+
+.categorias-principal h2{
+    text-align:center;
+
+    font-size:19px;
+
+    color:#27364d;
+
+    margin:0 0 15px;
+}
+
+.categorias-principal .botones-categorias{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+    width:100%;
+}
+
+.categorias-principal .boton-categoria{
+    min-height:85px;
+
+    background:#fff4f5;
+
+    border:none;
+
+    border-radius:15px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:7px;
+
+    color:#27364d;
+
+    font-size:10px;
+
+    text-align:center;
+
+    padding:8px;
+
+    box-sizing:border-box;
+}
+
+.categorias-principal .boton-categoria i{
+    font-size:22px;
+
+    color:#df7188;
+}
+</style>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBm6ZjkuJE4davydUD_8jYZE8-q-erlR68",
+    authDomain: "kacha-tienda.firebaseapp.com",
+    projectId: "kacha-tienda",
+    storageBucket: "kacha-tienda.firebasestorage.app",
+    messagingSenderId: "461924049685",
+    appId: "1:461924049685:web:e8f79ec5082fe7912e3f1c",
+    measurementId: "G-48L0PPM8KJ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Esta función queda disponible para el resto del código de la página
+  window.registrarCompra = async function(datos){
+    try{
+      await addDoc(collection(db, "compras"), {
+        nombre: datos.nombre,
+        departamento: datos.departamento,
+        celular: datos.celular,
+        metodoPago: datos.metodo,
+        productos: datos.items,
+        total: datos.total,
+        fecha: serverTimestamp()
+      });
+      console.log("Compra registrada en Firebase correctamente.");
+    }catch(e){
+      console.error("Error guardando la compra en Firebase:", e);
+    }
+  };
+</script>
+
+<script>
+
+function convertirUrlYoutube(url){
+    let match = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+
+    if(match){
+        return "https://www.youtube.com/embed/" + match[1];
+    }
+
+    return url;
+}
+
+function obtenerMiniaturaYoutube(url){
+    let match = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+
+    if(match){
+        return "https://img.youtube.com/vi/" + match[1] + "/hqdefault.jpg";
+    }
+
+    return "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80";
+}
+
+function cambiarVideo(url){
+    document.getElementById("videoBelleza").src = convertirUrlYoutube(url);
+}
+
+function mostrarTutoriales(categoria, boton){
+    const tutoriales = {
+        piel: [
+            { titulo: "Rutina de piel fresca", descripcion: "Paso a paso para una piel luminosa", url: "https://www.youtube.com/watch?v=9g8R6M6N6xA" },
+            { titulo: "Mascarilla casera", descripcion: "Ideal para hidratar y calmar", url: "https://www.youtube.com/watch?v=4J6w6lYJxjA" }
+        ],
+        maquillaje: [
+            { titulo: "Look natural", descripcion: "Base ligera y brillo natural", url: "https://www.youtube.com/watch?v=3KxWfVYj6XM" },
+            { titulo: "Maquillaje de noche", descripcion: "Ojos intensos con acabado elegante", url: "https://www.youtube.com/watch?v=5s7_WbiR79E" }
+        ],
+        cabello: [
+            { titulo: "Cuidado del cabello", descripcion: "Tips para un cabello suave", url: "https://www.youtube.com/watch?v=9g8R6M6N6xA" },
+            { titulo: "Peinado fácil", descripcion: "Estilo rápido para diario", url: "https://www.youtube.com/watch?v=4J6w6lYJxjA" }
+        ],
+        solar: [
+            { titulo: "Protección solar", descripcion: "Cómo aplicar tu protector", url: "https://www.youtube.com/watch?v=3KxWfVYj6XM" },
+            { titulo: "Protección diaria", descripcion: "Consejos para usarla todos los días", url: "https://www.youtube.com/watch?v=5s7_WbiR79E" }
+        ]
+    };
+
+    const contenedor = document.getElementById("listaTutoriales");
+
+    if(!contenedor) return;
+
+    contenedor.innerHTML = "";
+
+    tutoriales[categoria].forEach(function(tutorial){
+        let card = document.createElement("button");
+        card.className = "tutorial-card";
+        card.type = "button";
+        card.innerHTML = "<img src='" + obtenerMiniaturaYoutube(tutorial.url) + "' alt='" + tutorial.titulo + "'><div class='tutorial-info'><h3>" + tutorial.titulo + "</h3><p>" + tutorial.descripcion + "</p></div>";
+        card.onclick = function(){
+            cambiarVideo(tutorial.url);
+        };
+        contenedor.appendChild(card);
+    });
+
+    document.querySelectorAll("#Secretos\\ de\\ belleza .menu-secretos button").forEach(function(botonCategoria){
+        botonCategoria.classList.remove("active");
+    });
+
+    if(boton){
+        boton.classList.add("active");
+    }
+
+    if(tutoriales[categoria].length > 0){
+        cambiarVideo(tutoriales[categoria][0].url);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    let botonInicial = document.querySelector("#Secretos\\ de\\ belleza .menu-secretos button");
+    if(botonInicial){
+        mostrarTutoriales("piel", botonInicial);
+    }
+});
+function inicio(){
+
+    document.querySelector(".main").style.display = "";
+
+    document.querySelector("header").style.display = "flex";
+
+    document.getElementById("decoracionInferior").style.display = "block";
+
+    document.querySelector(".categorias-principal").style.display = "block";
+
+    let paginas = document.querySelectorAll(".pagina");
+
+    paginas.forEach(function(pagina){
+        pagina.style.display = "none";
+    });
+}
+function mostrarInfo(imagen){
+    let texto = imagen.nextElementSibling;
+
+    if(texto.style.opacity == "1"){
+        texto.style.opacity = "0";
+        texto.style.transform = "rotateY(180deg)";
+    }else{
+        texto.style.opacity = "1";
+        texto.style.transform = "rotateY(0deg)";
+    }
+}
+function mostrar(seccion){
+
+    document.querySelector(".main").style.display = "none";
+
+    document.querySelector("header").style.display = "none";
+
+    document.getElementById("decoracionInferior").style.display = "none";
+
+    document.querySelector(".categorias-principal").style.display = "none";
+
+    let paginas = document.querySelectorAll(".pagina");
+
+    paginas.forEach(function(pagina){
+        pagina.style.display = "none";
+    });
+
+    document.getElementById(seccion).style.display = "block";
+}
+
+function filtrarProductos(categoria, boton){
+
+    let productos = document.querySelectorAll(
+        "#Productos\\ de\\ belleza .producto"
+    );
+
+    productos.forEach(function(producto){
+
+        if(producto.dataset.category === categoria){
+
+            producto.style.display = "flex";
+
+        }else{
+
+            producto.style.display = "none";
+
+        }
+
+    });
+
+    document.querySelectorAll(
+        "#Productos\\ de\\ belleza .circulo"
+    ).forEach(function(botonCategoria){
+
+        botonCategoria.classList.remove("active");
+
+    });
+
+    boton.classList.add("active");
+}
+
+function filtrarProductosCelulares(categoria, boton){
+
+    let productos = document.querySelectorAll(
+        "#Productos\\ de\\ celular .producto"
+    );
+
+    productos.forEach(function(producto){
+
+        if(categoria === "Todos" || producto.dataset.category === categoria){
+
+            producto.style.display = "flex";
+
+        }else{
+
+            producto.style.display = "none";
+
+        }
+
+    });
+
+    document.querySelectorAll(
+        "#Productos\\ de\\ celular .marca"
+    ).forEach(function(botonCategoria){
+
+        botonCategoria.classList.remove("active");
+
+    });
+
+    boton.classList.add("active");
+}
+function cambiarCantidad(boton,cambio){
+
+    let cantidad = boton.parentElement.querySelector(".cantidad");
+
+    let valor = parseInt(cantidad.innerText);
+
+    valor += cambio;
+
+    if(valor < 1){
+        valor = 1;
+    }
+
+    cantidad.innerText = valor;
+    actualizarCarrito();
+}
+function actualizarCarrito(){
+
+    let lista=document.getElementById("listaCarrito");
+    let total=0;
+    let cantidadProductos=0;
+
+    lista.innerHTML="";
+
+    let productos=document.querySelectorAll(".producto, .combo");
+
+    productos.forEach(function(producto){
+
+        let check=producto.querySelector(".check-producto");
+
+        if(check.checked){
+
+            let nombre=check.dataset.nombre;
+            let precio=parseInt(check.dataset.precio);
+
+            let cantidad=parseInt(producto.querySelector(".cantidad").innerText);
+
+            let subtotal=precio*cantidad;
+
+            total+=subtotal;
+            cantidadProductos += cantidad;
+
+            lista.innerHTML+=`
+            <div class="itemCarrito">
+                <span>${nombre} x${cantidad}</span>
+                <span>${subtotal} Bs</span>
+            </div>`;
+        }
+
+    });
+
+    document.getElementById("total").innerText=total;
+
+    let contador=document.getElementById("contadorCarrito");
+    contador.innerText = cantidadProductos > 0 ? cantidadProductos : "";
+    contador.style.display = cantidadProductos > 0 ? "flex" : "none";
+
+    if(total>0){
+        document.getElementById("btnComprar").style.display="block";
+    }else{
+        document.getElementById("btnComprar").style.display="none";
+    }
+
+}
+
+function inicializarBotonesAgregar(){
+    document.querySelectorAll(".check-producto").forEach(function(checkbox){
+        if(checkbox.dataset.botonCreado === "true") return;
+
+        checkbox.dataset.botonCreado = "true";
+        checkbox.style.display = "none";
+
+        let boton = document.createElement("button");
+        boton.type = "button";
+        boton.className = "btn-anadir";
+        boton.innerHTML = '<i class="fas fa-shopping-cart"></i> Añadir';
+
+        boton.addEventListener("click", function(){
+            checkbox.checked = !checkbox.checked;
+            boton.innerHTML = checkbox.checked ? '<i class="fas fa-check"></i> Añadido' : '<i class="fas fa-shopping-cart"></i> Añadir';
+            boton.classList.toggle("activo", checkbox.checked);
+            actualizarCarrito();
+        });
+
+        let contenedor = checkbox.parentNode;
+        let selector = contenedor.querySelector(".selector-cantidad");
+
+        if(selector){
+            let acciones = document.createElement("div");
+            acciones.className = "acciones-producto";
+            selector.parentNode.insertBefore(acciones, selector);
+            acciones.appendChild(selector);
+            acciones.appendChild(boton);
+        }else{
+            contenedor.insertBefore(boton, checkbox);
+        }
+
+        boton.innerHTML = checkbox.checked ? '<i class="fas fa-check"></i> Añadido' : '<i class="fas fa-shopping-cart"></i> Añadir';
+        boton.classList.toggle("activo", checkbox.checked);
+    });
+}
+
+function obtenerProductosSeleccionados(){
+    let productos = document.querySelectorAll(".producto, .combo");
+    let lista = [];
+    let total = 0;
+
+    productos.forEach(function(producto){
+        let check = producto.querySelector(".check-producto");
+        if(check && check.checked){
+            let nombre = check.dataset.nombre || "Producto";
+            let precio = parseInt(check.dataset.precio) || 0;
+            let cantidad = parseInt(producto.querySelector(".cantidad").innerText) || 1;
+            let subtotal = precio * cantidad;
+            total += subtotal;
+            lista.push({nombre, cantidad, subtotal});
+        }
+    });
+
+    return {items: lista, total};
+}
+
+function actualizarMetodoPago(){
+    let departamento = document.getElementById("departamento").value;
+    let radioEfectivo = document.querySelector("input[name='metodoPago'][value='efectivo']");
+    let radioQr = document.querySelector("input[name='metodoPago'][value='qr']");
+
+    if(!radioEfectivo || !radioQr){
+        return;
+    }
+
+    if(departamento === "oruro"){
+        radioEfectivo.disabled = false;
+        radioQr.disabled = false;
+        return;
+    }
+
+    radioEfectivo.disabled = true;
+    radioQr.disabled = false;
+    radioQr.checked = true;
+
+    if(radioEfectivo.checked){
+        radioEfectivo.checked = false;
+    }
+}
+
+window.addEventListener("load", function(){
+    inicializarBotonesAgregar();
+    actualizarCarrito();
+    document.getElementById("departamento").addEventListener("change", actualizarMetodoPago);
+    actualizarMetodoPago();
+
+    document.getElementById("btnComprar").addEventListener("click", function(){
+        let formulario = document.getElementById("paymentForm");
+        let carrito = document.getElementById("carritoFlotante");
+        if(!formulario || !carrito) return;
+        let abierto = formulario.style.display === "flex";
+        formulario.style.display = abierto ? "none" : "flex";
+        carrito.classList.toggle("form-visible", !abierto);
+    });
+
+    document.getElementById("cerrarPago").addEventListener("click", function(){
+        let formulario = document.getElementById("paymentForm");
+        let carrito = document.getElementById("carritoFlotante");
+        if(!formulario || !carrito) return;
+        formulario.style.display = "none";
+        carrito.classList.remove("form-visible");
+    });
+
+    document.getElementById("btnPagarAhora").addEventListener("click", function(){
+        let nombre = document.getElementById("nombrePagador").value.trim();
+        let departamento = document.getElementById("departamento").value;
+        let celular = document.getElementById("celular").value.trim();
+        let metodo = document.querySelector("input[name='metodoPago']:checked");
+        let seleccion = obtenerProductosSeleccionados();
+
+        if(!nombre || !departamento || !celular){
+            alert("Por favor completa nombre, departamento y celular.");
+            return;
+        }
+        if(!metodo){
+            alert("Selecciona un método de pago.");
+            return;
+        }
+        if(departamento !== "oruro" && metodo.value !== "qr"){
+            alert("Para departamentos distintos de Oruro, solo está habilitado el pago por QR.");
+            return;
+        }
+        if(seleccion.items.length === 0){
+            alert("Selecciona al menos un producto antes de pagar.");
+            return;
+        }
+
+        window.registrarCompra({
+            nombre: nombre,
+            departamento: departamento,
+            celular: celular,
+            metodo: metodo.value,
+            items: seleccion.items,
+            total: seleccion.total
+        });
+
+        if(metodo.value === "efectivo"){
+            let mensaje = `Hola, quiero pagar en efectivo.%0A%0A` +
+                `Nombre: ${nombre}%0A` +
+                `Departamento: ${departamento}%0A` +
+                `Celular: ${celular}%0A` +
+                `Método: Pago en efectivo%0A%0A` +
+                `Productos:%0A`;
+
+            seleccion.items.forEach(function(item){
+                mensaje += `- ${item.nombre} x${item.cantidad} = ${item.subtotal} Bs%0A`;
+            });
+
+            mensaje += `%0ATotal: ${seleccion.total} Bs`;
+            let telefono = "59176142069";
+            let url = `https://wa.me/${telefono}?text=${mensaje}`;
+            window.open(url, "_blank");
+            return;
+        }
+
+        let mensajeQr = `Hola, quiero pagar por QR.%0A%0A` +
+            `Nombre: ${nombre}%0A` +
+            `Departamento: ${departamento}%0A` +
+            `Celular: ${celular}%0A` +
+            `Método: Pago por QR%0A%0A` +
+            `Productos:%0A`;
+
+        seleccion.items.forEach(function(item){
+            mensajeQr += `- ${item.nombre} x${item.cantidad} = ${item.subtotal} Bs%0A`;
+        });
+
+        mensajeQr += `%0ATotal: ${seleccion.total} Bs`;
+        let telefono = "59176142069";
+        let urlQr = `https://wa.me/${telefono}?text=${mensajeQr}`;
+        window.open(urlQr, "_blank");
+    });
+});
+
+function abrirCarrito(){
+
+    let carrito=document.getElementById("carritoFlotante");
+
+    if(carrito.style.display=="block"){
+        carrito.style.display="none";
+    }else{
+        carrito.style.display="block";
+    }
+
+}
+function buscarProductos(){
+
+    document.querySelector(".main").style.display = "none";
+
+    document.querySelector("header").style.display = "flex";
+
+    document.getElementById("decoracionInferior").style.display = "none";
+
+    let paginas = document.querySelectorAll(".pagina");
+
+    paginas.forEach(function(pagina){
+        pagina.style.display = "none";
+    });
+
+    document.getElementById("Productos de belleza").style.display = "block";
+
+    document.getElementById("Productos de belleza")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+}
+</script>
+
+</head>
+
+<div id="botonCarrito" onclick="abrirCarrito()">
+    🛒 <span id="contadorCarrito"></span>
+</div>
+
+<div id="carritoFlotante">
+
+    <h2>Mi carrito</h2>
+
+    <div id="listaCarrito"></div>
+
+    <h3>Total: <span id="total">0</span> Bs</h3>
+
+    <button id="btnComprar">
+        Comprar
+    </button>
+
+    <div id="paymentForm" class="payment-form">
+        <button id="cerrarPago" class="cerrar-pago" aria-label="Cerrar formulario" title="Cerrar">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="form-header">
+            <div class="icon-card"><i class="fas fa-credit-card"></i></div>
+            <h3>Formulario de Pago</h3>
+            <p>Completa tus datos para realizar el pago de forma segura.</p>
+        </div>
+        <div class="form-field">
+            <label for="nombrePagador">Nombre completo</label>
+            <div class="form-input">
+                <i class="fas fa-user"></i>
+                <input id="nombrePagador" type="text" placeholder="Escribe tu nombre completo">
+            </div>
+        </div>
+        <div class="form-field">
+            <label for="departamento">Departamento</label>
+            <div class="form-input">
+                <i class="fas fa-map-marker-alt"></i>
+                <select id="departamento">
+                    <option value="">Selecciona tu departamento</option>
+                    <option value="beni">Beni</option>
+                    <option value="chuquisaca">Chuquisaca</option>
+                    <option value="cochabamba">Cochabamba</option>
+                    <option value="la-paz">La Paz</option>
+                    <option value="pando">Pando</option>
+                    <option value="potosi">Potosí</option>
+                    <option value="santa-cruz">Santa Cruz</option>
+                    <option value="tarija">Tarija</option>
+                    <option value="oruro">Oruro</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-field">
+            <label for="celular">Número de celular</label>
+            <div class="form-input">
+                <i class="fas fa-phone"></i>
+                <input id="celular" type="tel" placeholder="Escribe tu número de celular">
+            </div>
+        </div>
+        <div class="form-field">
+            <label>Método de pago</label>
+            <div class="payment-methods">
+                <label class="payment-method">
+                    <input type="radio" name="metodoPago" value="efectivo">
+                    <span>Pago en efectivo</span>
+                </label>
+                <label class="payment-method">
+                    <input type="radio" name="metodoPago" value="qr">
+                    <span>Pago en QR</span>
+                </label>
+            </div>
+        </div>
+        <button id="btnPagarAhora" type="button">Pagar Ahora</button>
+    </div>
+
+</div>
+<body>
+
+<div class="menu">
+    <h2>MENÚ</h2>
+
+   <button onclick="mostrar('Productos de belleza')">
+    <i class="fas fa-spa"></i>
+    Productos de belleza
+    </button>
+
+    <button onclick="mostrar('Secretos de belleza')">
+    <i class="fas fa-magic"></i>
+    Secretos de belleza
+    </button>
+
+    <button onclick="mostrar('Productos de celular')">
+    <i class="fas fa-mobile-alt"></i>
+    Productos de celular
+    </button>
+
+    <button onclick="mostrar('combos de belleza')">
+    <i class="fas fa-heart"></i>
+    Combos de belleza
+    </button>
+
+    <button onclick="mostrar('combos de celular')">
+    <i class="fas fa-gift"></i>
+    Combos de celular
+    </button>
+
+    <button onclick="mostrar('Acerca de nosotros')">
+    <i class="fas fa-user"></i>
+    Acerca de nosotros
+    </button>
+</div>
+
+<div class="container">
+    <div class="decoracion-superior"></div>
+    <div class="decoracion-inferior" id="decoracionInferior"></div>
+    <div class="flor-izquierda">
+    <i class="fa-regular fa-lemon"></i>
+    </div>
+    <header>
+        <div class="logo" onclick="inicio()" style="cursor:pointer;">
+        Kacha
+    </div>
+
+
+
+        <div class="icons">
+            <a href="https://wa.me/59176142069" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@kacha_oruro" target="_blank">
+                <i class="fab fa-tiktok"></i>
+            </a>
+
+            <a href="https://www.facebook.com/share/1DcaKb4smE/" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+
+            <a href="https://www.instagram.com/kachaoruro" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        
+    </header>
+
+    <div class="main">
+
+        <div class="text">
+            <h1>
+                Productos de belleza<br>
+                También para tu celular
+                <span>Original</span>
+            </h1>
+
+            <p>
+                Encontrarás productos de belleza, accesorios
+                para celulares, promociones y combos especiales.
+            </p>
+
+        </div>
+
+        <div class="image">
+            <img src="https://mms.img.susercontent.com/ec15fc41ffee53f67c83cfe058d981f8" alt="productos">
+        </div>
+     </div>  
+<!-- CATEGORÍAS DE LA PÁGINA PRINCIPAL -->
+
+<div class="categorias-principal">
+
+    <h2>Explora nuestras categorías</h2>
+
+    <div class="botones-categorias">
+
+        <button class="boton-categoria"
+                onclick="mostrar('Productos de belleza')">
+
+            <i class="fas fa-spa"></i>
+
+            <span>
+                Productos de<br>
+                belleza
+            </span>
+
+        </button>
+
+
+        <button class="boton-categoria"
+                onclick="mostrar('Secretos de belleza')">
+
+            <i class="fas fa-wand-magic-sparkles"></i>
+
+            <span>
+                Secretos de<br>
+                belleza
+            </span>
+
+        </button>
+
+
+        <button class="boton-categoria"
+                onclick="mostrar('Productos de celular')">
+
+            <i class="fas fa-mobile-screen"></i>
+
+            <span>
+                Productos de<br>
+                celular
+            </span>
+
+        </button>
+
+
+        <button class="boton-categoria"
+                onclick="mostrar('combos de belleza')">
+
+            <i class="fas fa-heart"></i>
+
+            <span>
+                Combos de<br>
+                belleza
+            </span>
+
+        </button>
+
+
+        <button class="boton-categoria"
+                onclick="mostrar('combos de celular')">
+
+            <i class="fas fa-gift"></i>
+
+            <span>
+                Combos de<br>
+                celular
+            </span>
+
+        </button>
+
+
+        <button class="boton-categoria"
+                onclick="mostrar('Acerca de nosotros')">
+
+            <i class="fas fa-user"></i>
+
+            <span>
+                Acerca de<br>
+                nosotros
+            </span>
+
+        </button>
+
+    </div>
+
+</div>
+
+<section id="Productos de belleza" class="pagina">
+
+<div class="decoracion-pagina"></div>
+<div class="logo" onclick="inicio()" style="cursor:pointer;">Kacha</div>
+<div class="encabezado-pagina">
+    <h1>Productos de Belleza</h1>
+</div>
+
+<div class="categorias">
+<button class="circulo active" onclick="filtrarProductos('Cremas', this)">
+    <i class="fas fa-jar"></i><br>
+    Cremas
+</button>
+
+<button class="circulo" onclick="filtrarProductos('Protectores', this)">
+    <i class="fas fa-sun"></i><br>
+    Protectores
+</button>
+
+<button class="circulo" onclick="filtrarProductos('Labiales', this)">
+    <i class="fas fa-wand-magic-sparkles"></i><br>
+    Labiales
+</button>
+
+<button class="circulo" onclick="filtrarProductos('Sombras', this)">
+    <i class="fas fa-eye"></i><br>
+    Sombras
+</button>
+
+<button class="circulo" onclick="filtrarProductos('Lentes', this)">
+    <i class="fas fa-glasses"></i><br>
+    Lentes
+</button>
+
+<button class="circulo" onclick="filtrarProductos('Shampoo', this)">
+    <i class="fas fa-pump-soap"></i><br>
+    Shampoo
+</button>
+
+</div>
+
+
+
+<div class="productos">
+
+<div class="producto" data-category="Cremas">
+<div class="producto-frontal">
+<img src="https://granvelada.com/modules/numericco_category_custom_fields/upload/415/img/415-1749826121.jpeg" alt="Crema hidratante" width="250" onmouseenter="mostrarInfo(this)" onmouseleave="mostrarInfo(this)">
+<div class="texto-overlay">Crema hidratante para todo tipo de piel.</div>
+<div class="nombre-producto">Crema hidratante</div>
+<div class="precio-producto">50 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Crema hidratante" data-precio="50" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Cremas">
+<div class="producto-frontal">
+<img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=500&q=80" alt="Crema antiarrugas" width="250">
+<div class="nombre-producto">Crema antiarrugas</div>
+<div class="precio-producto">75 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Crema antiarrugas" data-precio="75" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+<div class="producto-trasero">
+<div class="texto-overlay">Crema antiarrugas con ácido hialurónico.</div>
+</div>
+</div>
+
+<div class="producto" data-category="Cremas">
+<div class="producto-frontal">
+<img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=500&q=80" alt="Crema de noche" width="250">
+<div class="nombre-producto">Crema de noche</div>
+<div class="precio-producto">65 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Crema de noche" data-precio="65" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+<div class="producto-trasero">
+<div class="texto-overlay">Crema de noche nutritiva para piel reseca.</div>
+</div>
+</div>
+
+<div class="producto" data-category="Protectores">
+<img src="https://cdn.shopify.com/s/files/1/2459/2787/files/principios-activos-cremas-centros-maria-padilla_1024x1024_fff04fb6-dc23-4651-9fc4-d3361d4f5a3c_2048x2048.jpg?v=1516794141" alt="Protector solar" width="250" onclick="mostrarInfo(this)">
+
+    <div class="texto-overlay">
+        Protector solar en crema para piel sensible.
+    </div>
+<div class="nombre-producto">Protector solar</div>
+<div class="precio-producto">60 Bs</div>
+<div class="info-producto">
+<input
+type="checkbox"
+class="check-producto"
+data-nombre="Protector solar"
+data-precio="60"
+onchange="actualizarCarrito()">
+        <div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+
+    <span class="cantidad">1</span>
+
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+
+</div>
+</div>
+
+<div class="producto" data-category="Protectores">
+<img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=500&q=80" alt="Protector facial" width="250" onclick="mostrarInfo(this)">
+<div class="texto-overlay">Protector facial SPF 50 para uso diario.</div>
+<div class="nombre-producto">Protector facial</div>
+<div class="precio-producto">72 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Protector facial" data-precio="72" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Protectores">
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=500&q=80" alt="Protector labial" width="250" onclick="mostrarInfo(this)">
+<div class="texto-overlay">Protector labial con vitaminas y SPF.</div>
+<div class="nombre-producto">Protector labial</div>
+<div class="precio-producto">45 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Protector labial" data-precio="45" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Labiales">
+<img src="https://www.inoxpa.es/uploads/producte/Equips%20mescla/cremas.jpg" alt="Labial" width="250" onclick="mostrarInfo(this)">
+
+<div class="texto-overlay">
+    Labial de larga duración con color intenso.
+</div>
+<div class="nombre-producto">Labial matte</div>
+<div class="precio-producto">70 Bs</div>
+<div class="info-producto">
+<input
+type="checkbox"
+class="check-producto"
+data-nombre="Labial matte"
+data-precio="70"
+onchange="actualizarCarrito()">
+        <div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+
+    <span class="cantidad">1</span>
+
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+
+</div>
+</div>
+
+<div class="producto" data-category="Labiales">
+<img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=500&q=80" alt="Lip tint" width="250" onclick="mostrarInfo(this)">
+<div class="texto-overlay">Tint labial hidratante con acabado natural.</div>
+<div class="nombre-producto">Lip tint</div>
+<div class="precio-producto">55 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Lip tint" data-precio="55" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Labiales">
+<img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80" alt="Gloss labial" width="250" onclick="mostrarInfo(this)">
+<div class="texto-overlay">Gloss brillante con efecto hidratante.</div>
+<div class="nombre-producto">Gloss labial</div>
+<div class="precio-producto">48 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Gloss labial" data-precio="48" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Sombras">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDRb04KZEfpvTRuCiWTlYvnN0Yu7NdOanzTw&s" alt="Sombra de ojos" width="250" onclick="mostrarInfo(this)">
+
+<div class="texto-overlay">
+    Paleta de sombras con tonos neutrales y vibrantes.
+</div>
+<div class="nombre-producto">Sombra de ojos</div>
+<div class="precio-producto">80 Bs</div>
+<div class="info-producto">
+<input
+type="checkbox"
+class="check-producto"
+data-nombre="Sombra de ojos"
+data-precio="80"
+onchange="actualizarCarrito()">
+        <div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+
+    <span class="cantidad">1</span>
+
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+
+</div>
+</div>
+
+<div class="producto" data-category="Sombras">
+<img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=80" alt="Paleta nude" width="250" onclick="mostrarInfo(this)">
+<div class="texto-overlay">Paleta nude con tonos suaves para diario.</div>
+<div class="nombre-producto">Paleta nude</div>
+<div class="precio-producto">95 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Paleta nude" data-precio="95" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Sombras">
+<img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&fit=crop&w=500&q=80" alt="Sombra líquida" width="250" onclick="mostrarInfo(this)">
+<div class="texto-overlay">Sombra líquida de alta duración y acabado brillante.</div>
+<div class="nombre-producto">Sombra líquida</div>
+<div class="precio-producto">68 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Sombra líquida" data-precio="68" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Lentes">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" alt="Lentes de sol" width="250" onclick="mostrarInfo(this)">
+<div class="texto-overlay">Lentes de sol con protección UV y estilo moderno.</div>
+<div class="nombre-producto">Lentes de sol</div>
+<div class="precio-producto">110 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Lentes de sol" data-precio="110" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Lentes">
+<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=80" alt="Lentes de lectura" width="250" onclick="mostrarInfo(this)">
+<div class="texto-overlay">Lentes de lectura con diseño cómodo y ligero.</div>
+<div class="nombre-producto">Lentes de lectura</div>
+<div class="precio-producto">90 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Lentes de lectura" data-precio="90" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Shampoo">
+<img src="https://images.unsplash.com/photo-1608571424352-926a8b0be2f6?auto=format&fit=crop&w=500&q=80" alt="Shampoo hidratante" width="250" onclick="mostrarInfo(this)">
+<div class="texto-overlay">Shampoo hidratante para cabello suave y brillante.</div>
+<div class="nombre-producto">Shampoo hidratante</div>
+<div class="precio-producto">58 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Shampoo hidratante" data-precio="58" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Shampoo">
+<img src="https://images.unsplash.com/photo-1608571424352-926a8b0be2f6?auto=format&fit=crop&w=500&q=80" alt="Shampoo anti-caída" width="250" onclick="mostrarInfo(this)">
+<div class="texto-overlay">Shampoo anti-caída con activos fortalecedores.</div>
+<div class="nombre-producto">Shampoo anti-caída</div>
+<div class="precio-producto">62 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Shampoo anti-caída" data-precio="62" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+</div>
+    
+</section>
+
+<section id="Secretos de belleza" class="pagina">
+
+    <div class="logo" onclick="inicio()" style="cursor:pointer;">
+    Kacha</div>
+<div class="encabezado-pagina">
+    <h1>Secretos de Belleza</h1>
+    <p>Videos tutoriales en miniaturas para aprender fácil</p>
+</div>
+    <div class="secretos-container">
+
+    <div class="menu-secretos">
+        <button type="button" onclick="mostrarTutoriales('piel', this)">
+            Cuidado de la piel
+        </button>
+
+        <button type="button" onclick="mostrarTutoriales('maquillaje', this)">
+            Maquillaje
+        </button>
+
+        <button type="button" onclick="mostrarTutoriales('cabello', this)">
+            Cuidado del cabello
+        </button>
+
+        <button type="button" onclick="mostrarTutoriales('solar', this)">
+            Protección solar
+        </button>
+    </div>
+
+    <div class="video-principal">
+        <iframe
+        id="videoBelleza"
+        width="100%"
+        height="220"
+        src="https://www.youtube.com/embed/9g8R6M6N6xA"
+        frameborder="0"
+        allowfullscreen>
+        </iframe>
+    </div>
+
+    <div id="listaTutoriales" class="lista-tutoriales"></div>
+
+</div>
+   
+</section>
+
+<section id="Productos de celular" class="pagina">
+ 
+   <div class="logo-subpagina">Kacha</div> 
+ <div class="encabezado-pagina">
+    <h1> Productos de Celular</h1>
+</div>
+
+ <div class="categorias">
+
+ <button class="marca active" onclick="filtrarProductosCelulares('Todos', this)">Todos</button>
+ <button class="marca" onclick="filtrarProductosCelulares('Fundas', this)">Fundas de celular</button>
+ <button class="marca" onclick="filtrarProductosCelulares('Cargadores', this)">Cargadores</button>
+ <button class="marca" onclick="filtrarProductosCelulares('Audifonos', this)">Audífonos</button>
+ <button class="marca" onclick="filtrarProductosCelulares('Accesorios', this)">Accesorios</button>
+ 
+
+ </div>
+
+<div class="contenido-celulares">
+
+<div class="producto" data-category="Fundas">
+<img src="https://cl-cenco-pim-resizer.ecomm.cencosud.com/unsafe/adaptive-fit-in/3840x0/filters:quality(75)/prd-cl/product-medias/84befcdc-7bc6-4667-8e43-f01ebe15c608/MK2GC1BX3D/MK2GC1BX3D-1/1728578906741-MK2GC1BX3D-1-0.jpg">
+<div class="nombre-producto">Funda celular</div>
+<div class="precio-producto">60 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Funda celular" data-precio="60" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Fundas">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=500&q=80">
+<div class="nombre-producto">Funda transparente</div>
+<div class="precio-producto">55 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Funda transparente" data-precio="55" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Fundas">
+<img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=500&q=80">
+<div class="nombre-producto">Funda resistente</div>
+<div class="precio-producto">85 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Funda resistente" data-precio="85" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Cargadores">
+<img src="https://joigo.cl/wp-content/uploads/2025/01/1-d9f5e7a1-515c-4c6d-95d3-aeddb2594ec1.jpg">
+<div class="nombre-producto">Cargador</div>
+<div class="precio-producto">100 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Cargador" data-precio="100" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Cargadores">
+<img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&w=500&q=80">
+<div class="nombre-producto">Cargador rápido</div>
+<div class="precio-producto">120 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Cargador rápido" data-precio="120" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Cargadores">
+<img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=500&q=80">
+<div class="nombre-producto">Cargador inalámbrico</div>
+<div class="precio-producto">150 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Cargador inalámbrico" data-precio="150" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Audifonos">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoFb4OYYiANjci_Dxxqz-yyE2bQN7vTELkJQ&s">
+<div class="nombre-producto">Audífonos</div>
+<div class="precio-producto">130 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Audífonos" data-precio="130" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Audifonos">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=500&q=80">
+<div class="nombre-producto">Audífonos Bluetooth</div>
+<div class="precio-producto">180 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Audífonos Bluetooth" data-precio="180" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Audifonos">
+<img src="https://images.unsplash.com/photo-1518444065439-e933c06ce9cd?auto=format&fit=crop&w=500&q=80">
+<div class="nombre-producto">Audífonos intraaurales</div>
+<div class="precio-producto">90 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Audífonos intraaurales" data-precio="90" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+<div class="producto" data-category="Accesorios">
+<img src="https://siliconandcases.cl/wp-content/uploads/2023/12/D_788210-MLC71834203386_092023-O-10.jpg">
+<div class="nombre-producto">Accesorio</div>
+<div class="precio-producto">120 Bs</div>
+<div class="info-producto">
+<input type="checkbox" class="check-producto" data-nombre="Accesorio" data-precio="120" onchange="actualizarCarrito()">
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+
+</section>
+
+<section id="combos de belleza" class="pagina">
+
+<div class="logo-subpagina">Kacha</div>
+
+<div class="encabezado-pagina">
+<h1>Combos y Promociones</h1>
+<p>Las mejores ofertas para ti.</p>
+</div>
+
+<div class="combo-contenedor">
+
+    
+    <div class="combo">
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=500">
+
+        <div class="combo-info">
+            <h3>Combo Duo Crema + Protector</h3>
+
+            <div class="combo-datos">
+<input
+type="checkbox"
+class="check-producto"
+data-nombre="Combo Duo Crema + Protector"
+data-precio="100"
+onchange="actualizarCarrito()">
+                <span class="precio">100</span> Bs
+
+                <div class="selector-cantidad">
+                    <button onclick="cambiarCantidad(this,-1)">−</button>
+                    <span class="cantidad">1</span>
+                    <button onclick="cambiarCantidad(this,1)">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="combo">
+        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=500">
+
+        <div class="combo-info">
+            <h3>Combo Glamour</h3>
+
+            <div class="combo-datos">
+<input
+type="checkbox"
+class="check-producto"
+data-nombre="Combo Glamour"
+data-precio="100"
+onchange="actualizarCarrito()">
+                <span class="precio">100</span> Bs
+
+                <div class="selector-cantidad">
+                    <button onclick="cambiarCantidad(this,-1)">−</button>
+                    <span class="cantidad">1</span>
+                    <button onclick="cambiarCantidad(this,1)">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="combo">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=500">
+
+        <div class="combo-info">
+            <h3>Combo Premium</h3>
+
+            <div class="combo-datos">
+<input
+type="checkbox"
+class="check-producto"
+data-nombre="Combo Premium"
+data-precio="160"
+onchange="actualizarCarrito()">
+                <span class="precio">160</span> Bs
+
+                <div class="selector-cantidad">
+                    <button onclick="cambiarCantidad(this,-1)">−</button>
+                    <span class="cantidad">1</span>
+                    <button onclick="cambiarCantidad(this,1)">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="combo">
+        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500">
+
+        <div class="combo-info">
+            <h3>Combo Completo</h3>
+
+            <div class="combo-datos">
+<input
+type="checkbox"
+class="check-producto"
+data-nombre="Combo Completo"
+data-precio="100"
+onchange="actualizarCarrito()">
+                <span class="precio">100</span> Bs
+
+                <div class="selector-cantidad">
+                    <button onclick="cambiarCantidad(this,-1)">−</button>
+                    <span class="cantidad">1</span>
+                    <button onclick="cambiarCantidad(this,1)">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="combo">
+        <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=500">
+
+        <div class="combo-info">
+            <h3>Combo Nutrición</h3>
+
+            <div class="combo-datos">
+<input type="checkbox" class="check-producto" data-nombre="Combo Nutrición" data-precio="140" onchange="actualizarCarrito()">
+                <span class="precio">140</span> Bs
+
+                <div class="selector-cantidad">
+                    <button onclick="cambiarCantidad(this,-1)">−</button>
+                    <span class="cantidad">1</span>
+                    <button onclick="cambiarCantidad(this,1)">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="combo">
+        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500">
+
+        <div class="combo-info">
+            <h3>Combo Brillo</h3>
+
+            <div class="combo-datos">
+<input type="checkbox" class="check-producto" data-nombre="Combo Brillo" data-precio="130" onchange="actualizarCarrito()">
+                <span class="precio">130</span> Bs
+
+                <div class="selector-cantidad">
+                    <button onclick="cambiarCantidad(this,-1)">−</button>
+                    <span class="cantidad">1</span>
+                    <button onclick="cambiarCantidad(this,1)">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="combo">
+        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500">
+
+        <div class="combo-info">
+            <h3>Combo Glamour Plus</h3>
+
+            <div class="combo-datos">
+<input type="checkbox" class="check-producto" data-nombre="Combo Glamour Plus" data-precio="170" onchange="actualizarCarrito()">
+                <span class="precio">170</span> Bs
+
+                <div class="selector-cantidad">
+                    <button onclick="cambiarCantidad(this,-1)">−</button>
+                    <span class="cantidad">1</span>
+                    <button onclick="cambiarCantidad(this,1)">+</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- AQUÍ FALTABA CERRAR combo-contenedor -->
+
+</section>
+
+<section id="combos de celular" class="pagina">
+
+<div class="logo-subpagina">Kacha</div>  
+<div class="encabezado-pagina">
+<h1> Combos de Celular</h1>
+<p>Promociones especiales para tu dispositivo.</p>
+</div>
+
+<div class="combo-contenedor">
+
+<div class="combo">
+<img src="https://lifemaxdistribuidora.cl/cdn/shop/files/p-crc162-1-97833b75-1cde-49cf-8e91-1797363e363c.jpg?v=1736338247">
+
+<div class="combo-info">
+<h3>Combo iPhone</h3>
+<p>Funda + Protector</p>
+
+<div class="combo-datos">
+<input
+type="checkbox"
+class="check-producto"
+data-nombre="Combo iPhone"
+data-precio="100"
+onchange="actualizarCarrito()">
+<span class="precio">100</span>Bs
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+
+    <span class="cantidad">1</span>
+
+    <button onclick="cambiarCantidad(this,1)">+</button>
+ </div>
+
+        </div>
+
+    </div>
+
+</div> 
+
+<div class="combo">
+<img src="https://cdn2.coolaccesorios.com/62310-large_default/carcasa-cool-para-samsung-a566-galaxy-a56-5g-glitter-rosa.jpg">
+
+<div class="combo-info">
+<h3>Combo Samsung</h3>
+<p>Audífonos + Cargador</p>
+
+<div class="combo-datos">
+<input
+type="checkbox"
+class="check-producto"
+data-nombre="Combo Samsung"
+data-precio="150"
+onchange="actualizarCarrito()">
+<span class="precio">150 </span>Bs
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+
+    <span class="cantidad">1</span>
+
+    <button onclick="cambiarCantidad(this,1)">+</button>
+ </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="combo">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRraWW7xyaZtyGaj6Fo9L5MUNOmkkyqIXD9rw&s">
+
+<div class="combo-info">
+<h3>Combo cargador iPhone</h3>
+<p>Su cajita + Cable USB</p>
+
+<div class="combo-datos">
+<input
+type="checkbox"
+class="check-producto"
+data-nombre="Combo cargador iPhone"
+data-precio="80"
+onchange="actualizarCarrito()">
+<span class="precio">80 </span>Bs
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+
+    <span class="cantidad">1</span>
+
+    <button onclick="cambiarCantidad(this,1)">+</button>
+ </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="combo">
+<img src="https://cdn.shopify.com/s/files/1/0568/4697/5035/files/cargadores-iphone-original-y-genericos.webp?v=1757369143">
+
+<div class="combo-info">
+<h3>Combo de cargadores de iPhone</h3>
+<p>dos cajitas+dos cables USB</p>
+
+<div class="combo-datos">
+<input
+type="checkbox"
+class="check-producto"
+data-nombre="Combo de cargadores de iPhone"
+data-precio="200"
+onchange="actualizarCarrito()">
+<span class="precio">200</span>Bs
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+
+    <span class="cantidad">1</span>
+
+    <button onclick="cambiarCantidad(this,1)">+</button>
+    </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="combo">
+<img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500">
+<div class="combo-info">
+<h3>Combo Protector + Funda</h3>
+<p>Protección completa para tu celular</p>
+<div class="combo-datos">
+<input type="checkbox" class="check-producto" data-nombre="Combo Protector + Funda" data-precio="110" onchange="actualizarCarrito()">
+<span class="precio">110</span>Bs
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="combo">
+<img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500">
+<div class="combo-info">
+<h3>Combo Carga Rápida</h3>
+<p>Cargador + cable premium</p>
+<div class="combo-datos">
+<input type="checkbox" class="check-producto" data-nombre="Combo Carga Rápida" data-precio="180" onchange="actualizarCarrito()">
+<span class="precio">180</span>Bs
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="combo">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500">
+<div class="combo-info">
+<h3>Combo Audio Plus</h3>
+<p>Audífonos + funda de viaje</p>
+<div class="combo-datos">
+<input type="checkbox" class="check-producto" data-nombre="Combo Audio Plus" data-precio="220" onchange="actualizarCarrito()">
+<span class="precio">220</span>Bs
+<div class="selector-cantidad">
+    <button onclick="cambiarCantidad(this,-1)">−</button>
+    <span class="cantidad">1</span>
+    <button onclick="cambiarCantidad(this,1)">+</button>
+</div>
+</div>
+</div>
+</div>
+
+</section>
+<section id="Acerca de nosotros" class="pagina">
+
+
+<div class="logo-subpagina">Kacha</div>
+<div class="encabezado-pagina">
+<h1> Acerca de Nosotros</h1>
+<p>Conoce nuestra ubicación y nuestro equipo.</p>
+</div>
+
+<div class="nosotros">
+
+<div class="ubicacion">
+
+
+<h2> Ubicación</h2>
+
+<iframe
+src="https://www.google.com/maps/embed?pb=!4v1781396601007!6m8!1m7!1sOAAabZaALiBTf7FD25WRAg!2m2!1d-17.97057765465935!2d-67.1128392502928!3f5.82!4f-40.41!5f0.4000000000000002"
+width="100%"
+height="300"
+style="border:0;border-radius:10px;"
+allowfullscreen=""
+loading="lazy">
+</iframe>
+
+<h3>¿Cómo llegar?</h3>
+ <video width="100%" controls>
+<source src="llegar-kacha.mp4" type="video/mp4">
+</video>  
+
+<p>
+Nos encontramos en la ciudad de Oruro.
+Puedes visitarnos de lunes a sábado
+de 9:00 a 19:00 horas.
+</p>
+
+</div>
+
+<div class="encargados">
+
+<h2>Encargados</h2>
+
+<div class="persona">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+<h3>Rene Kevin Choque Ventura</h3>
+<p>dueño de la tienda</p>
+</div>
+
+<div class="persona">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png">
+<h3>Segundo Encargado</h3>
+<p>Administración y control de productos.</p>
+</div>
+</div>
+</div>
+
+</section>  
+
+    </div>
+</div>
+<div class="barra-movil">
+
+    <button onclick="inicio()">
+        <i class="fas fa-house"></i>
+        <span>Inicio</span>
+    </button>
+
+    <button onclick="buscarProductos()">
+        <i class="fas fa-search"></i>
+        <span>Buscar</span>
+    </button>
+
+    <button onclick="abrirCarrito()">
+        <i class="fas fa-cart-shopping"></i>
+        <span>Carrito</span>
+    </button>
+
+    <button onclick="mostrar('Acerca de nosotros')">
+        <i class="fas fa-user"></i>
+        <span>Perfil</span>
+    </button>
+
+</div>
+
+</body>
+</html>
